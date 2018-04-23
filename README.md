@@ -51,7 +51,7 @@ $ docker rm <the copied CONTAINER ID>
 $ docker rmi harrymt-spring-boot-docker
 ```
 
-### Run the example Spring Boot application
+### Summary
 
 ```
 $ git clone https://github.com/harrymt/spring-boot-dockerized .
@@ -67,7 +67,7 @@ $ mvn package
 $ docker run -p 8081:8080 harrymt-spring-boot-docker
 ```
 
-### Errors
+### FAQ
 
-- Could not build image: Connection Refused
+- Could not build image: Connection Refused?
     - Tick 'Expose daemon on tcp://localhost:2375 without TLS' on Docker->Settings->General
