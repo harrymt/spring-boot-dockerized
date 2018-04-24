@@ -70,4 +70,4 @@ $ docker run -p 8081:8080 harrymt-spring-boot-docker
 ### FAQ
 
 - Could not build image: Connection Refused?
-    - Tick 'Expose daemon on tcp://localhost:2375 without TLS' on Docker->Settings->General
+    - If you are on Docker for Windows: Tick 'Expose daemon on tcp://localhost:2375 without TLS' on Docker->Settings->General
