@@ -8,35 +8,60 @@ A spring boot [maven](https://maven.apache.org/guides/getting-started/maven-in-f
 
 1. Create/Take a basic Spring Boot application
 2. Create a [`Dockerfile`](Dockerfile) in the root
-3. Change the following field:
+3. Make note of the follow `pom.xml` field:
 
 ```xml
 <!-- Name of the Spring Boot application -->
 <artifactId>harrymt-spring-boot-docker</artifactId>
 ```
 
-4. Now you are ready to build a tagged docker image with:
+4. Add the following plugin to your pom file:
+
+```xml
+<plugin>
+    <groupId>com.spotify</groupId>
+    <artifactId>dockerfile-maven-plugin</artifactId>
+    <version>1.4.0</version>
+    <executions>
+        <execution>
+        <id>default</id>
+        <goals>
+            <goal>build</goal>
+        </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <repository>${project.artifactId}</repository>
+        <tag>latest</tag>
+        <buildArgs>
+            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+        </buildArgs>
+    </configuration>
+</plugin>
+```
+
+5. Now you are ready to build a docker image with:
 
 ```
 $ mvn package
 ```
 
-5. You should have created a docker image called `harrymt-spring-boot-docker`!
-6. Type the docker command to list all images
+6. You should have created a docker image called `harrymt-spring-boot-docker`!
+7. Type the docker command to list all images
 
 ```
 $ docker images
 ```
 
-7. Now run the image with port networking from the Spring boot port (8080) to our port 8081
+8. Now run the image with port networking from the Spring boot port (8080) to our port 8081
 
 ```
 $ docker run -p 8081:8080 harrymt-spring-boot-docker
 ```
 
-8. View the spring application at http://localhost:8081
+9. View the spring application at http://localhost:8081
 
-9. Now for cleanup:
+10. Now for cleanup:
 
 ```
 # View running containers
