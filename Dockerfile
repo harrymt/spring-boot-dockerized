@@ -14,4 +14,3 @@ ADD target/${JAR_FILE} app.jar
 
 # Configures the container to be run as an executable
 ENTRYPOINT [ "java", "-jar", "/app.jar" ]
-
