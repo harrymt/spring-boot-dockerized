@@ -13,7 +13,11 @@ ARG JAR_FILE
 ADD target/${JAR_FILE} app.jar
 
 # Configures the container to be run as an executable
-ENTRYPOINT [ "java", "-jar", "/app.jar" ]
+ENTRYPOINT [ \
+    "java", \
+    "-jar", \
+    "/app.jar" \
+]
 
 # Note, this is just for the person reading,
 # it does not do anything, it just tells the reader that Spring is listening on
